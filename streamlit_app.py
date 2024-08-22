@@ -233,21 +233,29 @@ def management_app(persona, options):
                 justify-content: flex-end; /* Align button to the right */
                 margin-top: 10px;
             }
-
-            div.stButton > button:first-child {
-                border-radius: 50%;
-                background-color: #553D94; /* Button color */
-                color: white;
-                border: none;
-                padding: 10px 15px; /* Adjust size as needed */
-                cursor: pointer;
+                
+            /* Custom CSS for the dropdowns to align right and be smaller */
+            div.streamlit-expander {
+                width: 100%; /* Make sure it fills the container */
             }
+
+            div.streamlit-expander > div {
+                width: 30%; /* Set the width of the selectbox */
+                margin-left: auto; /* Push it to the right */
+            }
+            
+            /* Smaller font size for selectbox options */
+            .stSelectbox div {
+                font-size: 12px; /* Smaller font size */
+            }
+
             </style>
             """, unsafe_allow_html=True)
+    col1, col2 = st.columns([4, 1])  
+    with col2:
+        drop_down = st.selectbox("", options)
     unpin_button_pressed = st.button("DELETE", key='unpin_button')
-    drop_down = st.selectbox("Select", options)
     selected_query = st.selectbox("Select a query", queries if queries else ["Select a query"])
-
     st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
     col = st.columns((1, 1), gap='medium')
     conn = connect_to_db(DB_NAME)
