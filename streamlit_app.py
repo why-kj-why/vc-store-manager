@@ -841,6 +841,6 @@ stores = [
     "RIVERFRONT PLAZA",
     "WESTFIELD WHEATON"
 ]
-st.title("SIMULATE STORE MANAGER")
+st.title("STORE MANAGER")
 st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
 management_app("store", stores)
